@@ -105,3 +105,42 @@ public void dfs(TreeNode root, ArrayList<ArrayList<String>> list, ArrayList<Stri
         ArrayList<String> temp = new ArrayList<String>(curr);
         dfs(root.right, list, temp);
     } 
+    
+    
+    
+    
+<Optimized Solution 2: simplified dfs>
+source :https://www.programcreek.com/2014/05/leetcode-binary-tree-paths-java/
+Runtime: 10 ms, faster than 23.65% of Java online submissions for Binary Tree Paths.
+Memory Usage: 40.5 MB, less than 9.05% of Java online submissions for Binary Tree Paths.
+/*Simplified, but slower*/
+
+    public List<String> binaryTreePaths(TreeNode root) {
+ 
+    String sb = "";
+    ArrayList<String> result = new ArrayList<String>();
+ 
+    helper(root, result, sb);
+ 
+    return result;
+}
+ 
+public void helper(TreeNode root, ArrayList<String> result, String s){
+    if(root==null){
+        return;
+    }
+ 
+    s = s+"->"+root.val;
+ 
+    if(root.left==null &&root.right==null){
+        result.add(s.substring(2));
+        return;
+    }
+ 
+    if(root.left!=null){
+        helper(root.left, result, s);
+    }
+    if(root.right!=null){
+        helper(root.right, result, s);
+    }
+}
