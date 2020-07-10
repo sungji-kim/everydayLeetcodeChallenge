@@ -52,7 +52,7 @@ class BitComparator implements Comparator<Integer>{
         }
             
     }
-    
+
     public int numOne(Integer i){
         int numOne=0;
         
@@ -68,3 +68,55 @@ class BitComparator implements Comparator<Integer>{
         
     }
 }
+
+
+
+
+
+
+
+
+
+/*
+
+Optimized Solution from LeetCode
+
+*/
+class Solution {
+    
+    public int numOfOns(int n){
+        int sum=0;
+        while(n!=0){
+            sum+=n&1;
+            n=n>>1;
+        }
+        return sum;
+    }
+    public int[] sortByBits(int[] arr) {
+        
+        Arrays.sort(arr);
+        int x=0;
+        int []res=new int [arr.length];
+        for(int i=0;i<14;i++)
+        {
+            // j=0;
+            for( int j=0;j<arr.length;j++){
+                if(numOfOns(arr[j])==i){
+                    res[x]=arr[j];x++;
+                }
+            }
+            if(x==arr.length)break;
+        }
+        return res;
+    }
+}
+
+
+/*
+Comments:
+I used Comparator<Integer> to sort an array, but the optimized solution didn't use comparator. 
+Rather, it first sorted an array (Arrays.sort(int[])), and for each possible numOne ([0,14)), check if an element's numOne is equal to the possible numOne (see code 100 - 109).
+This way, even though it was double for loop, was much faster than using comparator.
+However, it was pleasant experience to practice comparator using this leetcode problem!
+Happy coding!
+*/
