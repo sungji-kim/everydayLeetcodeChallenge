@@ -1,0 +1,44 @@
+/*
+628. Maximum Product of Three Numbers
+Given an integer array, find three numbers whose product is maximum and output the maximum product.
+*/
+
+/*
+<My Solution>
+
+Runtime: 13 ms, faster than 24.94% of Java online submissions for Maximum Product of Three Numbers.
+Memory Usage: 51.7 MB, less than 12.95% of Java online submissions for Maximum Product of Three Numbers.
+*/
+
+class Solution {
+    public int maximumProduct(int[] nums) {
+        Arrays.sort(nums);
+        
+        int negMax;
+        int negSec;
+        int posMax;
+        int posSec;
+        int posThird;
+        
+        if(nums[0]<0 && nums[1]<0){
+            negMax = nums[0];
+            negSec = nums[1];
+            posMax = nums[nums.length-1];
+            posSec = nums[nums.length-2];
+            posThird = nums[nums.length-3];
+            
+            return Math.max(negMax*negSec*posMax, posMax*posSec*posThird);
+
+        } else{
+            posMax = nums[nums.length-1];
+            posSec = nums[nums.length-2];
+            posThird = nums[nums.length-3];
+            
+            return  posMax*posSec*posThird;
+            
+        }
+        
+        
+        
+    }
+}
