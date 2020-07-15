@@ -42,3 +42,55 @@ class Solution {
         
     }
 }
+
+
+/*
+Optimized Leetcode Solution
+*/
+class Solution 
+{
+    public int maximumProduct(int[] nums) 
+    {
+        Queue<Integer> pQueue = new PriorityQueue<>();
+        int min = Integer.MAX_VALUE,min2 = Integer.MAX_VALUE;
+        
+        for(int i : nums)
+        {
+        	if(pQueue.size() < 3)
+        		pQueue.add(i);
+        	else if(i > pQueue.peek())
+        	{	
+        		pQueue.add(i);
+        		pQueue.poll();
+        	}
+        	
+        	if(i < min)
+        	{	
+        		min2 = min;
+        		min = i;
+        	}
+        	else if(i < min2)
+        		min2 = i;
+        }
+        
+        int[] max = new int[3];
+        for(int i = 0;!pQueue.isEmpty();i++)
+        	max[i] = pQueue.poll();
+        	
+        if(max[2] >= 0)
+        	return max[2]*Math.max(max[0]*max[1], min*min2);
+        else
+        	return max[0]*max[1]*max[2];
+    }
+}
+
+/*
+Comments: For my solution, I simply compare negMax*negSex*posMax and posMax*posSex*posThird in order to get the maximum value of a product.
+In order to get negMax,etc., I used Arrays.sort().
+
+Of course, sorting an array is an expensive operation, it was not optimized. The optimized solution used Priority Queue. First, fill up a PQ with three elements,
+and meanwhile, also find two min numbers.
+After that, simply get three max numbers from PQ, and compute a product.
+With this exercise, I understand how PQ works. Also, I realized PQ in Java is a Max Heap.
+
+*/
