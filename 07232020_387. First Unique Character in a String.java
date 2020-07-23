@@ -5,26 +5,38 @@ Given a string, find the first non-repeating character in it and return its inde
 
 
 /*
-My WRONG Solution
+My Solution
 */
 class Solution {
     public int firstUniqChar(String s) {
-        int index = -1;
+    
+        // character, index
+        Map <Character, Integer> hm = new HashMap<>();
+        // character, occurrence
+        Map <Character, Integer> hm2 = new HashMap<>();
         
-        for(int i=s.length()-1; i>=0; i--){
-            boolean repeat = false;
-            for(int j=s.length()-1; j>=0; j--){
-                if(s.charAt(i)==s.charAt(j) && i!=j){
-                    repeat = true;
-                }
-                
+    
+        for (int i=0; i<s.length(); i++){
+            char c = s.charAt(i);
+            if(!hm.containsKey(c) && !hm2.containsKey(c)){
+                hm.put(c,i);
+            } else{
+                hm.remove(c);
+                hm2.put(c,0);
             }
-            if(repeat == false){
-                index = i;
-            }
+            
         }
         
-        return index;
+        if(!hm.isEmpty()){
+            ArrayList<Integer> newList = new ArrayList<>(hm.values());
+            Collections.sort(newList);
+            return newList.get(0);
+            
+        } else{
+            return -1;
+        }
+        
+        
     }
 }
 
