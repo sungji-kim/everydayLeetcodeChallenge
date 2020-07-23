@@ -44,5 +44,23 @@ class Solution {
 
 
 /*
-Optimized Solution
+Optimized Solution From LeetCode
 */
+class Solution {
+    public int firstUniqChar(String s) {
+        char[] letters = s.toCharArray();
+        int[] stat = new int[26];
+        for(int i = 0; i < letters.length; i ++) {
+                stat[letters[i] - 'a'] ++;
+        }
+        for(int i = 0; i < letters.length; i ++) {
+            if(stat[letters[i] - 'a'] == 1) {
+                return i;
+            }
+        }
+        return -1;
+    }
+}
+
+/*Comment: I used HashMap in order to track the occurrence of a letter, because HashMap's time complexity is constant. However, it turned out to be really slow.
+The optimized solution from leetcode only uses char array to store occurrence of a letter. Later, if the occurrence ==1, print the index. */
