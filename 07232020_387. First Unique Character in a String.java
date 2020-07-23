@@ -6,6 +6,8 @@ Given a string, find the first non-repeating character in it and return its inde
 
 /*
 My Solution
+Runtime: 67 ms, faster than 7.05% of Java online submissions for First Unique Character in a String.
+Memory Usage: 45.7 MB, less than 5.01% of Java online submissions for First Unique Character in a String.
 */
 class Solution {
     public int firstUniqChar(String s) {
