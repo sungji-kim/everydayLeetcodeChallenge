@@ -2,6 +2,12 @@ package com.example.july25.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+/*
+1. extend AbstractAnnotationConfigDispatcherServlerInitializer
+2. override methods
+- getServletconfigclasses: return array of DispatcherConfig Classes
+- getServletMappings: return array of urls
+*/
 public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitializer{
 
 	@Override
