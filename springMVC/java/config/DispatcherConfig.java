@@ -5,8 +5,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 
+/*
+Pretty much you can copy and paste
+1. add @Configuration annotation
+2. add @ComponentScan() annotation
+3. add viewResolver() method
+4. add @Bean annotation to viewResolver() method
+*/
 @Configuration
-@ComponentScan({"com.example.july25.controller"})
+@ComponentScan({"",""}) // put a package name that contains Controllers
 public class DispatcherConfig {
 	
 	@Bean
