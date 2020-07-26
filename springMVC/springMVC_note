@@ -1,6 +1,0 @@
-This is a note about how to create springMVC.
-
-
-1. Create two configuration class: WebConfig and DispatcherConfig
-
-
